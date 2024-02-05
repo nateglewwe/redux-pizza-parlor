@@ -14,9 +14,10 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
 const customerInfo = (state = [], action) => {
   if (action.type === 'SUBMIT_DATA') {
     //update state
+    return action.payload.customerData;
+  }
     return state;
-}
-}
+};
 
 const store = createStore(
   combineReducers({

@@ -1,8 +1,10 @@
+
 export default function Customer() {
+
     return (
         <>
             <h1>Step Two: Customer Information</h1>
-        <form>
+        <form >
             <input type="text" name="name" placeholder="Name"/>
             <input type="text" name="address" placeholder="Address"/>
             <input type="text" name="city" placeholder="City"/>
@@ -13,10 +15,6 @@ export default function Customer() {
             <input type="radio" id="delivery" name="order_type" value="Delivery"></input>
             {/* <label for="delivery">Delivery</label><br></br> */}
         </form>
-
-            
-        
-
         </>
     );
 }
