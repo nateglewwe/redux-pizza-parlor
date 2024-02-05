@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import { HashRouter as Router, Route } from "react-router-dom";
-import Customer from './Customer/Customer.jsx';
+import Customer from '../Customer/Customer.jsx';
 
 function App() {
   return (
