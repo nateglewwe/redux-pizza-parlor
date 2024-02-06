@@ -1,5 +1,11 @@
+import { useHistory } from "react-router-dom";
+
 export default function SelectPizza() {
-  const nextPageBtnClk = (event) => {};
+  const history = useHistory();
+
+  const nextPageBtnClk = (event) => {
+    history.push("/customer");
+  };
 
   return (
     <div className="select-pizza-div">
@@ -10,7 +16,7 @@ export default function SelectPizza() {
       <button
         type="button"
         onClick={nextPageBtnClk}>
-        Placeholder Next Page Button
+        Placeholder: Next Page Button
       </button>
     </div>
   );
