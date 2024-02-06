@@ -1,10 +1,15 @@
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import Grid from "@mui/material/Grid";
+import PizzaCard from "../PizzaCard/PizzaCard";
+import "./SelectPizza.css";
 
 export default function SelectPizza() {
   const history = useHistory();
   const [pizzaList, setPizzaList] = useState([]);
+
   // fetch list of pizzas
   const fetchPizzaList = () => {
     console.log("Fetching Pizza List");
@@ -29,12 +34,23 @@ export default function SelectPizza() {
   }, []);
   return (
     <div className="select-pizza-div">
-      <h1>I am the select pizza component</h1>
-      <img src="images/pizza_photo.png" />
-      <p>Pizza is great.</p>
-      {pizzaList.map((pizza) => {
-        return <h6 key={pizza.id}>{pizza.name}</h6>;
-      })}
+      <h2>Step 1: Select Your Pizza</h2>
+      <span id="price-test">
+        Total (for testing):{useSelector((state) => state.orderInfo.totalPrice)}{" "}
+      </span>
+
+      <Grid
+        container
+        spacing={2}>
+        {pizzaList.map((pizza) => {
+          return (
+            <PizzaCard
+              key={pizza.id}
+              pizzaItem={pizza}
+            />
+          );
+        })}
+      </Grid>
 
       <button
         type="button"
