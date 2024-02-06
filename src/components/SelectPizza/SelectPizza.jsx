@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import PizzaCard from "../PizzaCard/PizzaCard";
@@ -9,6 +10,7 @@ import "./SelectPizza.css";
 export default function SelectPizza() {
   const history = useHistory();
   const [pizzaList, setPizzaList] = useState([]);
+  const dispatch = useDispatch();
 
   // fetch list of pizzas
   const fetchPizzaList = () => {
@@ -19,6 +21,8 @@ export default function SelectPizza() {
       .then((response) => {
         console.log("Fetched pizzaList:", response.data);
         setPizzaList(response.data);
+        //reset store
+        dispatch({ type: "RESET_PIZZAS", payload: response.data });
       })
       .catch((err) => {
         console.error("ERROR in /api/pizza GET route:", err);
@@ -36,7 +40,8 @@ export default function SelectPizza() {
     <div className="select-pizza-div">
       <h2>Step 1: Select Your Pizza</h2>
       <span id="price-test">
-        Total (for testing):{useSelector((state) => state.orderInfo.totalPrice)}{" "}
+        Total (for testing):$
+        {useSelector((state) => state.orderInfo.totalPrice).toFixed(2)}{" "}
       </span>
 
       <Grid
