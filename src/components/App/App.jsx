@@ -1,15 +1,16 @@
 import React from "react";
 import axios from "axios";
-import "./App.css";
+import styles from "./App.module.css";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Customer from "../Customer/Customer.jsx";
 import SelectPizza from "../SelectPizza/SelectPizza.jsx";
+import Header from '../Header/Header.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
+    <div className={styles.App}>
+      <header className={styles.appHeader}>
+        <Header />
       </header>
       <Router>
         {/*All team routes go below this line*/}

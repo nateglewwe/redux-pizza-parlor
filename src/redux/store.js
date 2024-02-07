@@ -77,7 +77,7 @@ const customerInfo = (state = [], action) => {
 
 const store = createStore(
   combineReducers({
-    orderInfo, // 👈 Be sure to replace this, too!
+    orderInfo,
     customerInfo,
   }),
   applyMiddleware(logger)
