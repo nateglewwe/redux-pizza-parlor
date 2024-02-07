@@ -1,0 +1,16 @@
+/* .App {
+  text-align: center;
+} */
+
+.appHeader {
+  background-color: darkblue;
+  /* border: solid 3px green; */
+  /* height: 70px; */
+  padding: 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* .App-title {
+  font-size: 2em;
+} */
