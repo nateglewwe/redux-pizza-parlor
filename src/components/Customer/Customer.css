@@ -1,0 +1,35 @@
+h1 {
+  text-align: left;
+  margin-left: 20px;
+
+}
+
+.customer-form {
+  padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.customer-data {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    
+}
+
+.fields input {
+  width: 250px;
+  border: 1px solid black;
+  padding: 8px; 
+}
+
+.radio-container input {
+  margin-right: 1px; /* Optional: Add spacing between radio button and label */
+}
+
+.radio-container label {
+  display: inline-block;
+  width: 80px; 
+}
