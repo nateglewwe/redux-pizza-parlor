@@ -4,7 +4,9 @@ import styles from "./App.module.css";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Customer from "../Customer/Customer.jsx";
 import SelectPizza from "../SelectPizza/SelectPizza.jsx";
-import Header from '../Header/Header.jsx';
+import Header from "../Header/Header.jsx";
+import CheckoutTemp from "../CheckoutTemp/CheckoutTemp.jsx";
+import Admin from "../Admin/Admin.jsx";
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
         </Route>
         <Route path="/customer">
           <Customer />
+        </Route>
+        <Route path="/checkout">
+          <CheckoutTemp />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Router>
     </div>

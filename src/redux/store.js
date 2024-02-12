@@ -7,18 +7,33 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
   // totalPrice : integer containing order total price
   // pizzaList : array of objects with quantity, id, name, and price of each pizza
 
+  // Retrieve list of pizzas from server
   if (action.type === "RESET_PIZZAS") {
-    const newPizzaList = [];
+    let newPizzaList = [];
     const pizzas = action.payload;
-    pizzas.forEach((pizza) => {
-      newPizzaList.push({
-        quantity: 0,
-        id: pizza.id,
-        name: pizza.name,
-        price: pizza.price,
+    console.log("Current Pizza List Length:", state.pizzaList.length);
+    if (state.pizzaList.length === 0) {
+      pizzas.forEach((pizza) => {
+        newPizzaList.push({
+          quantity: 0,
+          id: pizza.id,
+          name: pizza.name,
+          price: pizza.price,
+        });
       });
-    });
+    } else {
+      newPizzaList = state.pizzaList;
+    }
     // console.table(newPizzaList);
+    return { totalPrice: 0, pizzaList: newPizzaList };
+  }
+
+  // Set all pizza order quantities to 0
+  if (action.type === "CLEAR_PIZZA_ORDER") {
+    const newPizzaList = state.pizzaList.map((pizza) => {
+      pizza.quantity = 0;
+    });
+
     return { totalPrice: 0, pizzaList: newPizzaList };
   }
 

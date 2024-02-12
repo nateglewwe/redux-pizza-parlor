@@ -14,8 +14,6 @@ export default function SelectPizza() {
 
   // fetch list of pizzas
   const fetchPizzaList = () => {
-    console.log("Fetching Pizza List");
-
     axios
       .get("/api/pizza")
       .then((response) => {
