@@ -10,6 +10,7 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
   // Retrieve list of pizzas from server
   if (action.type === "RESET_PIZZAS") {
     let newPizzaList = [];
+    let newTotalPrice = 0;
     const pizzas = action.payload;
     console.log("Current Pizza List Length:", state.pizzaList.length);
     if (state.pizzaList.length === 0) {
@@ -23,9 +24,10 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
       });
     } else {
       newPizzaList = state.pizzaList;
+      newTotalPrice = state.totalPrice;
     }
     // console.table(newPizzaList);
-    return { totalPrice: 0, pizzaList: newPizzaList };
+    return { totalPrice: newTotalPrice, pizzaList: newPizzaList };
   }
 
   // Set all pizza order quantities to 0
