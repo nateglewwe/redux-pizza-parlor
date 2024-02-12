@@ -39,10 +39,10 @@ export default function SelectPizza() {
   return (
     <div className="select-pizza-div">
       <h2>Step 1: Select Your Pizza</h2>
-      <span id="price-test">
+      {/* <span id="price-test">
         Total (for testing):$
         {useSelector((state) => state.orderInfo.totalPrice).toFixed(2)}{" "}
-      </span>
+      </span> */}
 
       <Grid
         container
