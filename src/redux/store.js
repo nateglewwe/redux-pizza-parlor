@@ -59,7 +59,8 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
       }
     });
 
-    const newTotalPrice = state.totalPrice - +targetPizzaArrayEle.price;
+    let newTotalPrice = state.totalPrice - +targetPizzaArrayEle.price;
+    newTotalPrice = +Number.parseFloat(newTotalPrice).toFixed(2);
 
     return { totalPrice: newTotalPrice, pizzaList: newPizzaList };
   }
