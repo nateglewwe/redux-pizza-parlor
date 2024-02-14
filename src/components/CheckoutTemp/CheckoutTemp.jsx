@@ -10,8 +10,6 @@ export default function CheckoutTemp() {
 
   const submitBtnClk = () => {
     console.log("Submit Button Clicked");
-    console.log("Customer Info:", customerInfo);
-    console.log("Pizza Order Info:", pizzaOrderInfo);
 
     // create data package
     const pizzaData = [];
@@ -20,7 +18,7 @@ export default function CheckoutTemp() {
         pizzaData.push({ id: pizza.id, quantity: pizza.quantity });
       }
     });
-    console.log("Pizza Data to be passed:", pizzaData);
+
     const orderData = {
       customer_name: customerInfo.name,
       street_address: customerInfo.address,
@@ -30,7 +28,7 @@ export default function CheckoutTemp() {
       type: customerInfo.orderType,
       pizzas: pizzaData,
     };
-    console.log("OrderData:", orderData);
+
     axios
       .post("/api/order", orderData)
       .then((result) => {
