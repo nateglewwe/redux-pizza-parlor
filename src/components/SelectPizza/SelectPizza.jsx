@@ -1,11 +1,12 @@
-import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import axios from "axios";
-import Grid from "@mui/material/Grid";
-import PizzaCard from "../PizzaCard/PizzaCard";
-import "./SelectPizza.css";
+import axios from 'axios';
+import Grid from '@mui/material/Grid';
+import PizzaCard from '../PizzaCard/PizzaCard';
+import './SelectPizza.css';
+import NextButton from '../NextButton/NextButton';
 
 export default function SelectPizza() {
   const history = useHistory();
@@ -14,23 +15,23 @@ export default function SelectPizza() {
 
   // fetch list of pizzas
   const fetchPizzaList = () => {
-    console.log("Fetching Pizza List");
+    console.log('Fetching Pizza List');
 
     axios
-      .get("/api/pizza")
+      .get('/api/pizza')
       .then((response) => {
-        console.log("Fetched pizzaList:", response.data);
+        console.log('Fetched pizzaList:', response.data);
         setPizzaList(response.data);
         //reset store
-        dispatch({ type: "RESET_PIZZAS", payload: response.data });
+        dispatch({ type: 'RESET_PIZZAS', payload: response.data });
       })
       .catch((err) => {
-        console.error("ERROR in /api/pizza GET route:", err);
+        console.error('ERROR in /api/pizza GET route:', err);
       });
   };
 
-  const nextPageBtnClk = (event) => {
-    history.push("/customer");
+  const nextPageBtnClk = () => {
+    history.push('/customer');
   };
 
   useEffect(() => {
@@ -41,27 +42,17 @@ export default function SelectPizza() {
       <h2>Step 1: Select Your Pizza</h2>
       <span id="price-test">
         Total (for testing):$
-        {useSelector((state) => state.orderInfo.totalPrice).toFixed(2)}{" "}
+        {useSelector((state) => state.orderInfo.totalPrice).toFixed(2)}{' '}
       </span>
+      <form onSubmit={nextPageBtnClk}>
+        <Grid container spacing={2}>
+          {pizzaList.map((pizza) => {
+            return <PizzaCard key={pizza.id} pizzaItem={pizza} />;
+          })}
+        </Grid>
 
-      <Grid
-        container
-        spacing={2}>
-        {pizzaList.map((pizza) => {
-          return (
-            <PizzaCard
-              key={pizza.id}
-              pizzaItem={pizza}
-            />
-          );
-        })}
-      </Grid>
-
-      <button
-        type="button"
-        onClick={nextPageBtnClk}>
-        Placeholder: Next Page Button
-      </button>
+        <NextButton />
+      </form>
     </div>
   );
 }
