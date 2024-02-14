@@ -83,12 +83,40 @@ export default function Admin() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Pizza Sample</td>
-                          <td>Sample QTY</td>
-                          <td>Sample Price</td>
-                          <td>Sample Total</td>
-                        </tr>
+                        {lineItems
+                          .filter((lineItem) => {
+                            return lineItem.order_id === order.id;
+                          })
+                          .map((item) => {
+                            return (
+                              <tr>
+                                <td>
+                                  {
+                                    pizzaDetails.filter((pizza) => {
+                                      return pizza.id === item.pizza_id;
+                                    })[0].name
+                                  }
+                                </td>
+                                <td>{item.quantity}</td>
+                                <td>
+                                  $
+                                  {
+                                    pizzaDetails.filter((pizza) => {
+                                      return pizza.id === item.pizza_id;
+                                    })[0].price
+                                  }
+                                </td>
+                                <td>
+                                  $
+                                  {(
+                                    +pizzaDetails.filter((pizza) => {
+                                      return pizza.id === item.pizza_id;
+                                    })[0].price * +item.quantity
+                                  ).toFixed(2)}
+                                </td>
+                              </tr>
+                            );
+                          })}
                       </tbody>
                     </table>
                   </td>
