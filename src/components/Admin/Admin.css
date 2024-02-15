@@ -55,3 +55,7 @@ table.order-detail-table {
 td.details-data {
   padding: 0px;
 }
+
+.hidden {
+  display: none;
+}

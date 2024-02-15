@@ -1,6 +1,6 @@
-import Grid from "@mui/material/Grid";
-import { useDispatch, useSelector } from "react-redux";
-import "./PizzaCard.css";
+import Grid from '@mui/material/Grid';
+import { useDispatch, useSelector } from 'react-redux';
+import './PizzaCard.css';
 
 export default function PizzaCard({ pizzaItem }) {
   const dispatch = useDispatch();
@@ -13,13 +13,13 @@ export default function PizzaCard({ pizzaItem }) {
   });
 
   const addPizzaClk = (event) => {
-    console.log("Add Pizza Clicked");
-    dispatch({ type: "ADD_PIZZA", payload: pizzaItem.id });
+    console.log('Add Pizza Clicked');
+    dispatch({ type: 'ADD_PIZZA', payload: pizzaItem.id });
   };
 
   const removePizzaClk = (event) => {
-    console.log("Remove Pizza Clicked");
-    dispatch({ type: "REMOVE_PIZZA", payload: pizzaItem.id });
+    console.log('Remove Pizza Clicked');
+    dispatch({ type: 'REMOVE_PIZZA', payload: pizzaItem.id });
   };
 
   return (
