@@ -1,0 +1,48 @@
+.detail-pizza-card {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.detail-pizza-card .left {
+  height: 100px;
+  /*width: 100px; */
+  /* contain: layout; */
+}
+
+.detail-pizza-card img {
+  height: 100px;
+  width: 100px;
+  border-radius: 5px 0px 0px 5px;
+  border-right: 1px solid black;
+}
+
+.detail-pizza-card .center {
+  height: 100px;
+  /*width: 100px; */
+  /* contain: layout; */
+}
+
+.detail-pizza-card .center {
+  height: 100px;
+  width: 70%;
+}
+
+.center h3 {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.center p {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+}
+.right p {
+  margin: 0;
+  padding: 3px 5px;
+}

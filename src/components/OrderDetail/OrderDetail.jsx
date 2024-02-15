@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './OrderDetail.css';
+import DetailCard from '../DetailCard/DetailCard';
 
 export default function OrderDetail() {
   const { id } = useParams();
@@ -54,7 +55,7 @@ export default function OrderDetail() {
   }, []);
 
   return (
-    <div>
+    <div className="order-detail-div">
       <h2>Order Details:</h2>
       <div className="details-div">
         <div>
@@ -65,6 +66,24 @@ export default function OrderDetail() {
         <div>
           <h2>For {orderInfo.type}</h2>
         </div>
+      </div>
+      <div className="detail-cards-div">
+        {orderLineItems.map((pizzaItem) => {
+          return (
+            <DetailCard
+              pizza={
+                pizzaDetails.filter((item) => {
+                  return item.id === pizzaItem.pizza_id;
+                })[0]
+              }
+              quantity={pizzaItem.quantity}
+              key={pizzaItem.id}
+            />
+          );
+        })}
+      </div>
+      <div className="order-price-div">
+        <h2>Order Total: ${orderInfo.total}</h2>
       </div>
     </div>
   );
