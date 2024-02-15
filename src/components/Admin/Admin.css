@@ -27,7 +27,11 @@ td.order-name {
   align-items: center;
 }
 
-tbody > tr:nth-of-type(even) {
+tbody > tr.inner:nth-of-type(even) {
+  background-color: lightgray;
+}
+
+tbody > tr.outer:nth-of-type(n + 3) {
   background-color: lightgray;
 }
 
@@ -58,4 +62,13 @@ td.details-data {
 
 .hidden {
   display: none;
+}
+
+.expand-selector {
+  cursor: pointer;
+}
+
+.outer span {
+  color: blue;
+  cursor: pointer;
 }

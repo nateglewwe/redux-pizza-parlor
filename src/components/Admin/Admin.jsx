@@ -1,15 +1,18 @@
 import axios from 'axios';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import './Admin.css';
 import moment from 'moment';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Admin() {
   const [orderList, setOrderList] = useState([]);
   const [pizzaDetails, setPizzaDetails] = useState([]);
   const [lineItems, setLineItems] = useState([]);
   const [expanders, setExpanders] = useState([]);
+  const history = useHistory();
 
   const fetchOrders = () => {
     axios
@@ -56,6 +59,10 @@ export default function Admin() {
     document.getElementById(`expander${id}`).classList.toggle('hidden');
   };
 
+  const detailsClk = (id) => {
+    history.push(`/order/${id}`);
+  };
+
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -63,7 +70,7 @@ export default function Admin() {
   return (
     <div>
       <h1>Admin Page</h1>
-      {JSON.stringify(expanders)}
+      {/* {JSON.stringify(expanders)} */}
       <table className="orders-table">
         <thead>
           <tr>
@@ -76,18 +83,26 @@ export default function Admin() {
         <tbody>
           {orderList.map((order) => {
             return (
-              <>
-                <tr key={order.id}>
+              <React.Fragment key={order.id}>
+                <tr className="outer">
                   <td className="order-name">
-                    {order.customer_name}{' '}
+                    <div>
+                      {order.customer_name} (
+                      <span onClick={() => detailsClk(order.id)}>
+                        Order Detail Page
+                      </span>
+                      )
+                    </div>
                     {!expanders[order.id] ? (
                       <AddIcon
+                        className="expand-selector"
                         onClick={() => {
                           toggleExpander(event, order.id);
                         }}
                       />
                     ) : (
                       <RemoveIcon
+                        className="expand-selector"
                         onClick={() => {
                           toggleExpander(event, order.id);
                         }}
@@ -120,7 +135,9 @@ export default function Admin() {
                           })
                           .map((item) => {
                             return (
-                              <tr>
+                              <tr
+                                className="inner"
+                                key={item.id}>
                                 <td>
                                   {
                                     pizzaDetails.filter((pizza) => {
@@ -152,7 +169,7 @@ export default function Admin() {
                     </table>
                   </td>
                 </tr>
-              </>
+              </React.Fragment>
             );
           })}
         </tbody>

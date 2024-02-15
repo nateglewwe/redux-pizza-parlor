@@ -1,12 +1,13 @@
-import React from "react";
-import axios from "axios";
-import styles from "./App.module.css";
-import { HashRouter as Router, Route } from "react-router-dom";
-import Customer from "../Customer/Customer.jsx";
-import SelectPizza from "../SelectPizza/SelectPizza.jsx";
-import Header from "../Header/Header.jsx";
-import CheckoutTemp from "../CheckoutTemp/CheckoutTemp.jsx";
-import Admin from "../Admin/Admin.jsx";
+import React from 'react';
+import axios from 'axios';
+import styles from './App.module.css';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import Customer from '../Customer/Customer.jsx';
+import SelectPizza from '../SelectPizza/SelectPizza.jsx';
+import Header from '../Header/Header.jsx';
+import CheckoutTemp from '../CheckoutTemp/CheckoutTemp.jsx';
+import Admin from '../Admin/Admin.jsx';
+import OrderDetail from '../OrderDetail/OrderDetail.jsx';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/order/:id">
+          <OrderDetail />
         </Route>
       </Router>
     </div>
