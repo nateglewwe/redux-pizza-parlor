@@ -41,7 +41,7 @@ export default function Customer() {
     });
     // Reset the form or navigate to the next step
     // (depending on your application flow)
-    history.push('/order');
+    history.push('/checkout');
   };
 
   return (
@@ -83,8 +83,7 @@ export default function Customer() {
               name="order_type"
               value="Pickup"
               checked={formData.orderType === 'Pickup'}
-              onChange={handleOrderTypeChange}
-            ></input>
+              onChange={handleOrderTypeChange}></input>
             <label htmlFor="pickup">Pickup</label>
             <br></br>
             <input
@@ -93,8 +92,7 @@ export default function Customer() {
               name="order_type"
               value="Delivery"
               checked={formData.orderType === 'Delivery'}
-              onChange={handleOrderTypeChange}
-            ></input>
+              onChange={handleOrderTypeChange}></input>
             <label htmlFor="delivery">Delivery</label>
             <div className="radio-container">
               <NextButton />

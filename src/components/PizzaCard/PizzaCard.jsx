@@ -37,10 +37,10 @@ export default function PizzaCard({ pizzaItem }) {
           ) : (
             <h1 onClick={addPizzaClk}>ADD</h1>
           )}
-          <span>
+          {/* <span>
             QTY (for testing):
             {storeQty}
-          </span>
+          </span> */}
         </div>
       </div>
     </Grid>

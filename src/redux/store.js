@@ -1,5 +1,5 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import logger from "redux-logger";
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import logger from 'redux-logger';
 
 // reducers go here
 const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
@@ -7,22 +7,39 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
   // totalPrice : integer containing order total price
   // pizzaList : array of objects with quantity, id, name, and price of each pizza
 
-  if (action.type === "RESET_PIZZAS") {
-    const newPizzaList = [];
+  // Retrieve list of pizzas from server
+  if (action.type === 'RESET_PIZZAS') {
+    let newPizzaList = [];
+    let newTotalPrice = 0;
     const pizzas = action.payload;
-    pizzas.forEach((pizza) => {
-      newPizzaList.push({
-        quantity: 0,
-        id: pizza.id,
-        name: pizza.name,
-        price: pizza.price,
+    console.log('Current Pizza List Length:', state.pizzaList.length);
+    if (state.pizzaList.length === 0) {
+      pizzas.forEach((pizza) => {
+        newPizzaList.push({
+          quantity: 0,
+          id: pizza.id,
+          name: pizza.name,
+          price: pizza.price,
+        });
       });
-    });
+    } else {
+      newPizzaList = state.pizzaList;
+      newTotalPrice = state.totalPrice;
+    }
     // console.table(newPizzaList);
+    return { totalPrice: newTotalPrice, pizzaList: newPizzaList };
+  }
+
+  // Set all pizza order quantities to 0
+  if (action.type === 'CLEAR_PIZZA_ORDER') {
+    const newPizzaList = state.pizzaList.map((pizza) => {
+      pizza.quantity = 0;
+    });
+
     return { totalPrice: 0, pizzaList: newPizzaList };
   }
 
-  if (action.type === "ADD_PIZZA") {
+  if (action.type === 'ADD_PIZZA') {
     const targetPizzaArrayEle = state.pizzaList.filter(
       (arrayEle) => arrayEle.id === action.payload
     )[0];
@@ -38,12 +55,13 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
       }
     });
 
-    const newTotalPrice = state.totalPrice + +targetPizzaArrayEle.price;
+    let newTotalPrice = state.totalPrice + +targetPizzaArrayEle.price;
+    newTotalPrice = +Number.parseFloat(newTotalPrice).toFixed(2);
 
     return { totalPrice: newTotalPrice, pizzaList: newPizzaList };
   }
 
-  if (action.type === "REMOVE_PIZZA") {
+  if (action.type === 'REMOVE_PIZZA') {
     const targetPizzaArrayEle = state.pizzaList.filter(
       (arrayEle) => arrayEle.id === action.payload
     )[0];
@@ -59,7 +77,8 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
       }
     });
 
-    const newTotalPrice = state.totalPrice - +targetPizzaArrayEle.price;
+    let newTotalPrice = state.totalPrice - +targetPizzaArrayEle.price;
+    newTotalPrice = +Number.parseFloat(newTotalPrice).toFixed(2);
 
     return { totalPrice: newTotalPrice, pizzaList: newPizzaList };
   }
@@ -68,7 +87,7 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
 };
 
 const customerInfo = (state = [], action) => {
-  if (action.type === "SUBMIT_DATA") {
+  if (action.type === 'SUBMIT_DATA') {
     //update state
     return action.payload.customerData;
   }

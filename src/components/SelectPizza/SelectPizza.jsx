@@ -40,17 +40,24 @@ export default function SelectPizza() {
   return (
     <div className="select-pizza-div">
       <h2>Step 1: Select Your Pizza</h2>
-      <span id="price-test">
+      {/* <span id="price-test">
         Total (for testing):$
-        {useSelector((state) => state.orderInfo.totalPrice).toFixed(2)}{' '}
-      </span>
-      <form onSubmit={nextPageBtnClk}>
-        <Grid container spacing={2}>
-          {pizzaList.map((pizza) => {
-            return <PizzaCard key={pizza.id} pizzaItem={pizza} />;
-          })}
-        </Grid>
+        {useSelector((state) => state.orderInfo.totalPrice).toFixed(2)}{" "}
+      </span> */}
 
+      <Grid
+        container
+        spacing={2}>
+        {pizzaList.map((pizza) => {
+          return (
+            <PizzaCard
+              key={pizza.id}
+              pizzaItem={pizza}
+            />
+          );
+        })}
+      </Grid>
+      <form onSubmit={nextPageBtnClk}>
         <NextButton />
       </form>
     </div>

@@ -1,0 +1,74 @@
+table.orders-table {
+  border-collapse: collapse;
+  border: 2px solid black;
+  margin: 0px auto;
+  letter-spacing: 1px;
+  width: 97%;
+}
+
+.orders-table thead {
+  background-color: grey;
+  color: white;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid black;
+  /* width: 20%; */
+  padding: 5px;
+  text-align: left;
+}
+
+td.order-name {
+  /* background-color: blue; */
+  contain: layout;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+tbody > tr.inner:nth-of-type(even) {
+  background-color: lightgray;
+}
+
+tbody > tr.outer:nth-of-type(n + 3) {
+  background-color: lightgray;
+}
+
+table.order-detail-table {
+  border-collapse: collapse;
+  border: 2px solid black;
+  margin: 0px 20px;
+  letter-spacing: 1px;
+  width: 90%;
+}
+
+.order-detail-table thead {
+  background-color: green;
+  color: white;
+}
+
+.order-detail-table th,
+.order-detail-table td {
+  border: 1px solid black;
+  width: 20%;
+  padding: 5px;
+  text-align: left;
+}
+
+td.details-data {
+  padding: 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.expand-selector {
+  cursor: pointer;
+}
+
+.outer span {
+  color: blue;
+  cursor: pointer;
+}
