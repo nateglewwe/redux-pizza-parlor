@@ -2,10 +2,12 @@ import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+
 import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import PizzaCard from '../PizzaCard/PizzaCard';
 import './SelectPizza.css';
+import NextButton from '../NextButton/NextButton';
 
 export default function SelectPizza() {
   const history = useHistory();
@@ -14,6 +16,8 @@ export default function SelectPizza() {
 
   // fetch list of pizzas
   const fetchPizzaList = () => {
+    console.log('Fetching Pizza List');
+
     axios
       .get('/api/pizza')
       .then((response) => {
@@ -27,7 +31,7 @@ export default function SelectPizza() {
       });
   };
 
-  const nextPageBtnClk = (event) => {
+  const nextPageBtnClk = () => {
     history.push('/customer');
   };
 
@@ -55,11 +59,8 @@ export default function SelectPizza() {
         })}
       </Grid>
 
-      <button
-        type="button"
-        onClick={nextPageBtnClk}>
-        Placeholder: Next Page Button
-      </button>
+        <NextButton />
+      </form>
     </div>
   );
 }

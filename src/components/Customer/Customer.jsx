@@ -1,18 +1,19 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import "./Customer.css";
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import NextButton from '../NextButton/NextButton';
+import './Customer.css';
 
 export default function Customer() {
   const dispatch = useDispatch();
-  const history = useHistory(); // Placed for testing - AMG
+  const history = useHistory();
 
   const [formData, setFormData] = useState({
-    name: "",
-    address: "",
-    city: "",
-    zip: "",
-    orderType: "Pickup", // Default to Pickup
+    name: '',
+    address: '',
+    city: '',
+    zip: '',
+    orderType: 'Pickup', // Default to Pickup
   });
 
   const handleInputChange = (e) => {
@@ -33,15 +34,14 @@ export default function Customer() {
     event.preventDefault();
     // Dispatch an action with the customer information
     dispatch({
-      type: "SUBMIT_DATA",
+      type: 'SUBMIT_DATA',
       payload: {
         customerData: formData,
       },
     });
     // Reset the form or navigate to the next step
     // (depending on your application flow)
-
-    history.push("/checkout"); // placed for testing - AMG
+    history.push('/order');
   };
 
   return (
@@ -74,7 +74,6 @@ export default function Customer() {
               placeholder="Zip"
               onChange={handleInputChange}
             />
-            <button type="submit">Test Submit Button</button>
           </div>
 
           <div className="radio-container">
@@ -83,7 +82,7 @@ export default function Customer() {
               id="pickup"
               name="order_type"
               value="Pickup"
-              checked={formData.orderType === "Pickup"}
+              checked={formData.orderType === 'Pickup'}
               onChange={handleOrderTypeChange}></input>
             <label htmlFor="pickup">Pickup</label>
             <br></br>
@@ -92,9 +91,12 @@ export default function Customer() {
               id="delivery"
               name="order_type"
               value="Delivery"
-              checked={formData.orderType === "Delivery"}
+              checked={formData.orderType === 'Delivery'}
               onChange={handleOrderTypeChange}></input>
             <label htmlFor="delivery">Delivery</label>
+            <div className="radio-container">
+              <NextButton />
+            </div>
           </div>
         </div>
       </form>

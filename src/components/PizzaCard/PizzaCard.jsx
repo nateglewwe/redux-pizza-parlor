@@ -25,10 +25,7 @@ export default function PizzaCard({ pizzaItem }) {
   return (
     <Grid item>
       <div className="pizza-card-div">
-        <img
-          src={pizzaItem.image_path}
-          alt="A fresh Pizza"
-        />
+        <img src={pizzaItem.image_path} alt="A fresh Pizza" />
         <div className="pizza-text">
           <h2>{pizzaItem.name}</h2>
           <p>{pizzaItem.description}</p>

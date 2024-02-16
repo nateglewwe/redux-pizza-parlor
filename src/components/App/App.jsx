@@ -1,3 +1,4 @@
+import './App.css';
 import React from 'react';
 import axios from 'axios';
 import styles from './App.module.css';
@@ -8,13 +9,12 @@ import Header from '../Header/Header.jsx';
 import CheckoutTemp from '../CheckoutTemp/CheckoutTemp.jsx';
 import Admin from '../Admin/Admin.jsx';
 import OrderDetail from '../OrderDetail/OrderDetail.jsx';
+import Order from '../Order/Order.jsx';
 
 function App() {
   return (
-    <div className={styles.App}>
-      <header className={styles.appHeader}>
-        <Header />
-      </header>
+    <>
+      <Header />
       <Router>
         {/*All team routes go below this line*/}
         <Route
@@ -24,6 +24,9 @@ function App() {
         </Route>
         <Route path="/customer">
           <Customer />
+        </Route>
+        <Route path="/order">
+          <Order />
         </Route>
         <Route path="/checkout">
           <CheckoutTemp />
@@ -35,7 +38,7 @@ function App() {
           <OrderDetail />
         </Route>
       </Router>
-    </div>
+    </>
   );
 }
 
