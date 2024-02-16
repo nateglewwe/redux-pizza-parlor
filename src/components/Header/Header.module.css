@@ -1,9 +1,18 @@
 .totalCost {
-    /* text-align: right; */
-    font-size: 24px;
-    float: right;
+  /* text-align: right; */
+  font-size: 24px;
+  float: right;
 }
 
 .appTitle {
-    font-size: 2em;
-  }
+  font-size: 2em;
+}
+
+.appHeader {
+  background-color: darkblue;
+  /* border: solid 3px green; */
+  /* height: 70px; */
+  padding: 30px;
+  color: white;
+  margin-bottom: 20px;
+}
