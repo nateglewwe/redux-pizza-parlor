@@ -2,7 +2,6 @@ import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-
 import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import PizzaCard from '../PizzaCard/PizzaCard';
@@ -58,7 +57,7 @@ export default function SelectPizza() {
           );
         })}
       </Grid>
-
+      <form onSubmit={nextPageBtnClk}>
         <NextButton />
       </form>
     </div>

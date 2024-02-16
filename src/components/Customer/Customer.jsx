@@ -41,7 +41,7 @@ export default function Customer() {
     });
     // Reset the form or navigate to the next step
     // (depending on your application flow)
-    history.push('/order');
+    history.push('/checkout');
   };
 
   return (

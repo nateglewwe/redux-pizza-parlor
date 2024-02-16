@@ -60,7 +60,7 @@ export default function Admin() {
   };
 
   const detailsClk = (id) => {
-    history.push(`/order/${id}`);
+    history.push(`/orderDetail/${id}`);
   };
 
   useEffect(() => {

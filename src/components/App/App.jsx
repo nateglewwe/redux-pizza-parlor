@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import axios from 'axios';
-import styles from './App.module.css';
+
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Customer from '../Customer/Customer.jsx';
 import SelectPizza from '../SelectPizza/SelectPizza.jsx';
@@ -34,7 +34,7 @@ function App() {
         <Route path="/admin">
           <Admin />
         </Route>
-        <Route path="/order/:id">
+        <Route path="/orderDetail/:id">
           <OrderDetail />
         </Route>
       </Router>
