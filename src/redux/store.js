@@ -33,7 +33,10 @@ const orderInfo = (state = { totalPrice: 0, pizzaList: [] }, action) => {
   // Set all pizza order quantities to 0
   if (action.type === 'CLEAR_PIZZA_ORDER') {
     const newPizzaList = state.pizzaList.map((pizza) => {
-      pizza.quantity = 0;
+      return {
+        ...pizza,
+        quantity: 0
+      }
     });
 
     return { totalPrice: 0, pizzaList: newPizzaList };
