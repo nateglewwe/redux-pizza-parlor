@@ -10,6 +10,7 @@ import CheckoutTemp from '../CheckoutTemp/CheckoutTemp.jsx';
 import Admin from '../Admin/Admin.jsx';
 import OrderDetail from '../OrderDetail/OrderDetail.jsx';
 import Order from '../Order/Order.jsx';
+import Checkout from '../Checkout/Checkout.jsx';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           <Order />
         </Route>
         <Route path="/checkout">
-          <CheckoutTemp />
+          <Checkout />
         </Route>
         <Route path="/admin">
           <Admin />
