@@ -45,9 +45,9 @@ function Checkout () {
     };
 
     return (
-    <>
+    <div className="checkout-view">
         <h1>Step Three: Checkout</h1>
-        <p className="DOM-right">{customerInfo.orderType}</p>
+        <p className="order-type">{customerInfo.orderType}</p>
         <span>{customerInfo.name}</span><br/>
         <span>{customerInfo.address}</span><br/>
         <span>{customerInfo.city} {customerInfo.zip}</span>
@@ -61,7 +61,7 @@ function Checkout () {
         </thead>
         <tbody>
             {pizzaOrderInfo.pizzaList.map((pizza, index) => {return (pizza.quantity > 0 ? 
-                <tr key={index}>
+                <tr key={index} className="table-row">
                     <td>{pizza.name}</td>
                     <td>{pizza.quantity}</td>
                     <td>${pizza.price*pizza.quantity}</td>
@@ -71,10 +71,10 @@ function Checkout () {
             )})}
         </tbody>
         </table>
-        <p className="DOM-right">Total: ${pizzaOrderInfo.totalPrice}</p>
-        <br/><br/><br/>
-        <button className="DOM-right" type="button" onClick={submitBtnClk}>CHECKOUT</button>
-    </>
+        <p className="total-cost">Total: ${pizzaOrderInfo.totalPrice}</p>
+        <br/><br/><br/><br/><br/>
+        <button className="checkout-button" type="button" onClick={submitBtnClk}>CHECKOUT</button>
+    </div>
     )
 }
 
