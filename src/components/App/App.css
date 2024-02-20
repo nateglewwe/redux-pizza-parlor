@@ -9,5 +9,11 @@
 .btn {
   float: right;
   padding: 10px 50px 10px 50px;
-  margin: 50px;
+  margin: 20px;
+}
+
+.back-btn {
+  float: left;
+  padding: 10px 50px 10px 50px;
+  margin: 20px;
 }
