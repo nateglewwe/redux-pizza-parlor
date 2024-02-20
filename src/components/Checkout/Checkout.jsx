@@ -45,9 +45,9 @@ function Checkout () {
     };
 
     return (
-    <>
+    <div className="checkout-view">
         <h1>Step Three: Checkout</h1>
-        <p className="DOM-right">{customerInfo.orderType}</p>
+        <p className="order-type">{customerInfo.orderType}</p>
         <span>{customerInfo.name}</span><br/>
         <span>{customerInfo.address}</span><br/>
         <span>{customerInfo.city} {customerInfo.zip}</span>
@@ -60,47 +60,21 @@ function Checkout () {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[0].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[0].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[0].price*pizzaOrderInfo.pizzaList[0].quantity}</td>
-            </tr>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[1].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[1].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[1].price*pizzaOrderInfo.pizzaList[1].quantity}</td>
-            </tr>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[2].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[2].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[2].price*pizzaOrderInfo.pizzaList[2].quantity}</td>
-            </tr>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[3].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[3].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[3].price*pizzaOrderInfo.pizzaList[3].quantity}</td>
-            </tr>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[4].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[4].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[4].price*pizzaOrderInfo.pizzaList[4].quantity}</td>
-            </tr>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[5].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[5].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[5].price*pizzaOrderInfo.pizzaList[5].quantity}</td>
-            </tr>
-            <tr>
-                <td>{pizzaOrderInfo.pizzaList[6].name}</td>
-                <td>{pizzaOrderInfo.pizzaList[6].quantity}</td>
-                <td>${pizzaOrderInfo.pizzaList[6].price*pizzaOrderInfo.pizzaList[6].quantity}</td>
-            </tr>
+            {pizzaOrderInfo.pizzaList.map((pizza, index) => {return (pizza.quantity > 0 ? 
+                <tr key={index} className="table-row">
+                    <td>{pizza.name}</td>
+                    <td>{pizza.quantity}</td>
+                    <td>${pizza.price*pizza.quantity}</td>
+                </tr>
+                :
+                <tr key={index}></tr>
+            )})}
         </tbody>
         </table>
-        <p className="DOM-right">${pizzaOrderInfo.totalPrice}</p>
-        <br/><br/><br/>
-        <button className="DOM-right" type="button" onClick={submitBtnClk}>CHECKOUT</button>
-    </>
+        <p className="total-cost">Total: ${pizzaOrderInfo.totalPrice}</p>
+        <br/><br/><br/><br/><br/>
+        <button className="checkout-button" type="button" onClick={submitBtnClk}>CHECKOUT</button>
+    </div>
     )
 }
 

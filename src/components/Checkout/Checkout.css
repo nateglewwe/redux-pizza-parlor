@@ -1,8 +1,45 @@
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 5px;
 }
 
-.DOM-right{
+table {
+    margin-left: 20px;
+    width: 97%;
+}
+
+thead {
+    background-color: gray;
+    color: white;
+}
+
+tbody > tr.table-row:nth-of-type(even) {
+    background-color: lightgray;
+  }
+
+span {
+    margin-left: 20px;
+}
+
+.order-type{
     float: right;
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.total-cost{
+    float: right;
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.checkout-button{
+    float: right;
+    margin-right: 20px;
+    padding: 10px 50px 10px 50px;
+    font-size: 16px;
+    background-color: darkblue;
+    color: white;
+    border-radius: 10px;
 }
