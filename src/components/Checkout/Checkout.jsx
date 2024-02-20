@@ -3,6 +3,7 @@ import './Checkout.css';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import BackButton from '../BackButton/BackButton';
 
 function Checkout () {
     const customerInfo = useSelector((state) => state.customerInfo);
@@ -44,6 +45,10 @@ function Checkout () {
         });
     };
 
+    const backBtnClk = () => {
+        history.push('/customer');
+      };
+
     return (
     <div className="checkout-view">
         <h1>Step Three: Checkout</h1>
@@ -73,7 +78,10 @@ function Checkout () {
         </table>
         <p className="total-cost">Total: ${pizzaOrderInfo.totalPrice}</p>
         <br/><br/><br/><br/><br/>
-        <button className="checkout-button" type="button" onClick={submitBtnClk}>CHECKOUT</button>
+        <div>
+            <BackButton backFunction={backBtnClk}/>
+            <button className="checkout-button" type="button" onClick={submitBtnClk}>CHECKOUT</button>
+        </div>
     </div>
     )
 }

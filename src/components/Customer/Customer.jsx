@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import NextButton from '../NextButton/NextButton';
+import BackButton from '../BackButton/BackButton';
 import './Customer.css';
 
 export default function Customer() {
@@ -42,6 +43,10 @@ export default function Customer() {
     // Reset the form or navigate to the next step
     // (depending on your application flow)
     history.push('/checkout');
+  };
+
+  const backBtnClk = () => {
+    history.push('/');
   };
 
   return (
@@ -96,6 +101,7 @@ export default function Customer() {
             <label htmlFor="delivery">Delivery</label>
             <div className="radio-container">
               <NextButton />
+              <BackButton backFunction={backBtnClk}/>
             </div>
           </div>
         </div>
